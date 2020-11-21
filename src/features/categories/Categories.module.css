@@ -1,0 +1,51 @@
+.categories {
+    min-width: 100%;
+    min-height: 100vh;
+}
+
+.dark {
+  background-color: #282c34;
+  color: wheat;
+}
+
+.category {
+    display: flex;
+    font-size: 16px;
+    width: 100%;
+   
+}
+.category form {
+    margin: 0 auto;
+    display: flex;
+}
+.category input {
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
+    flex-basis: 60%;
+}
+
+.header {
+    margin-top: calc(20px + 5vmin);
+    margin-bottom: calc(5px + 5vmin);
+}
+
+.listElement {
+    margin-top: calc(5px + 5vmin);
+}
+
+.confirm {
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+}
+
+.addCat {
+    transform: translateY(0);
+    transition: 0.3s ;
+    z-index: 0;
+}
+.addCatHide {
+    composes: addCat;
+    transform: translateY(-100%);
+    z-index: -1;
+}
