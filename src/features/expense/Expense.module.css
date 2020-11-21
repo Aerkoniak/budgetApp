@@ -1,0 +1,27 @@
+.expense {
+    min-height: 100vh;
+    min-width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.header{
+    margin-bottom: 15vh;
+}
+
+.input {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: calc(18px + 1vmin);
+}
+
+.confirm {
+    margin-top: 15vh;
+}
