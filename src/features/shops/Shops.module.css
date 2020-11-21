@@ -1,0 +1,13 @@
+.shops {
+    min-width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.summaryList{
+    list-style: none;
+    font-size: calc(14px + 1vmin);
+}
