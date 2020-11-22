@@ -1,33 +1,18 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styles from './Shops.module.css'
 import { selectSubmitedList, selectExpense } from '../expense/expenseSlice';
-import { ToggleButtonGroup, ToggleButton } from 'react-bootstrap'
+// import { ToggleButtonGroup, ToggleButton } from 'react-bootstrap'
 import { selectShopsList } from '../categories/categoriesSlice';
+import ShopsButtons from './ShopsButtons';
 
 export function Shops() {
 
     const submitedList = useSelector(selectSubmitedList);
     const total = useSelector(selectExpense);
 
-    const ToggleButtonGroupControled = () => {
-        const shopList = useSelector(selectShopsList);
-        const [value, setValue] = useState([]);
-
-        const handleChange = (val) => setValue(val);
-
-        const shops = shopList.map((shop, index) => ((
-            <ToggleButton className={styles.toggleBtn} variant='outline-success' key={index + shop.name} value={shop.name}>
-                {shop.name}
-            </ToggleButton>
-        )))
-        return (
-            <ToggleButtonGroup type="checkbox" value={value} onChange={handleChange}>
-                {shops}
-            </ToggleButtonGroup>
-        );
-    }
-
+    const shopList = useSelector(selectShopsList);
+    // const [value, setValue] = useState([]);
 
 
     const summary = submitedList.map((element, index) => {
@@ -51,7 +36,7 @@ export function Shops() {
             <ul className={styles.summaryList}>
                 {summary}
             </ul>
-            <ToggleButtonGroupControled />
+            <ShopsButtons shopList={shopList} />
         </div>
     )
 }
