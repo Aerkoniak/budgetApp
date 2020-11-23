@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Expense } from './features/expense/Expense';
 import Categories from './features/categories/Categories';
 import { Shops } from './features/shops/Shops';
+import History from './features/history/History';
 
 
 function App() {
@@ -18,15 +19,22 @@ function App() {
 
   return (
     <div className="App">
-      {!expenseStage ?
-        <Expense />
-        : null}
-      {expenseStage === "one" ?
-        <Categories />
-        : null}
-      {expenseStage === "two" ?
-        <Shops />
-        : null}
+      <div className="history">
+        <h3 className="">Historia</h3>
+        <History />
+      </div>
+      <div className="today">
+        {!expenseStage ?
+          <Expense />
+          : null}
+        {expenseStage === "one" ?
+          <Categories />
+          : null}
+        {expenseStage === "two" ?
+          <Shops />
+          : null}
+      </div>
+
     </div>
   );
 }
