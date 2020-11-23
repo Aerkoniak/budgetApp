@@ -2,12 +2,14 @@
     min-width: 100%;
     min-height: 100vh;
 
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    justify-items: center;
+    justify-items: center; */
 }
 
 .summaryList{
+    width: 100%;
+
     list-style: none;
     font-size: calc(14px + 1vmin);
 }
@@ -15,16 +17,21 @@
 .shopsList {
     display: flex;
     margin: 0 auto;
+    flex-wrap: wrap;
 }
 
-.shopsButton {
-    font-size: calc(12px + 1vmin);
-    padding: 5px;
-    background-color: red;
-    border: none;
+.addShopBtn {
+    margin: calc(10px + 2vmin) 0px;
 }
 
-.shopsButtonFocused {
-    composes: shopsButton;
-    background-color: blue;
+.addShop {
+    transform: translateY(0);
+    transition: 0.3s ;
+    z-index: 0;
+    margin: calc(10px + 2vmin) 0px;
+}
+.addShopHide {
+    composes: addShop;
+    transform: translateY(-100%);
+    z-index: -1;
 }
