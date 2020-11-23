@@ -18,6 +18,7 @@ function Categories() {
     const [catValue, setCatValue] = useState("");
     const [catArray, setCatArray] = useState([]);
     const [isAddCat, hideAddCat] = useState(false);
+    const [warnings, setWarnings] = useState("")
 
     const splitExpense = (id) => {
         const array = catArray;
@@ -32,13 +33,29 @@ function Categories() {
         setCatArray(array)
     }
 
+    const addCatSupporter = () => {
+        let isNew = true;
+        categoriesList.ForEach((cat, index) => {
+            if (cat.name.toLowerCase() === newCategory.toLowerCase()) isNew = false;
+        })
+        if (isNew) {
+            dispatch(addCategory(newCategory));
+            setWarnings("")
+        }
+        else setWarnings("Kategoria znajduje się już na liście")
+
+        setNewCategory("");
+        hideAddCat(false);
+    }
+
     const submitStage = () => {
         let submitArray = [];
-        let exp = {
+        let rest = {
             name: "Inne",
             amount: inne
         }
-        submitArray.push(exp);
+        if (inne) submitArray.push(rest);
+
         catArray.map(pos => submitArray.push(pos))
         // console.log(submitArray)
         dispatch(nextStage(submitArray))
@@ -92,12 +109,10 @@ function Categories() {
                     onChange={(e) => setNewCategory(e.target.value)}
                 />
                 <InputGroup.Append>
-                    <Button variant="outline-light" onClick={() => {
-                        dispatch(addCategory(newCategory));
-                        setNewCategory("")
-                    }}>Dodaj kategorię</Button>
+                    <Button variant="outline-light" onClick={addCatSupporter}>Dodaj kategorię</Button>
                 </InputGroup.Append>
             </InputGroup>
+            {warnings ? <p>{warnings}</p> : null}
 
             <Button className={styles.confirm} variant="outline-light" type="submit" onClick={() => { submitStage() }} >Zatwierdź</Button>
         </div>

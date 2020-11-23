@@ -43,6 +43,8 @@
     transform: translateY(0);
     transition: 0.3s ;
     z-index: 0;
+    margin-top: calc(10px + 2vmin) 0px;
+
 }
 .addCatHide {
     composes: addCat;
