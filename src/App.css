@@ -1,4 +1,5 @@
 .App {
+  /* min-width: 100vh; */
   text-align: center;
   background-color: #282c34;
   color: white;
@@ -6,11 +7,36 @@
 
   display: flex;
   align-items: center;
+  /* align-content: space-between; */
   justify-items: center;
 }
 
+.history {
+  display: none;
+}
+   
+.today {
+  width: 100vh;
+  display: flex;
+
+}
 
 
 .App-link {
   color: #61dafb;
+}
+
+@media (min-width: 1024px) {
+  .App {
+    min-width: 100vh;
+    align-content: space-between;
+  }
+
+  .history{
+    display: block;
+    flex-basis: 20%;
+  }
+  .today {
+    flex-basis: 75%;
+  }
 }
