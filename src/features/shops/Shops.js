@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './Shops.module.css'
-import { selectSubmitedList, selectExpense } from '../expense/expenseSlice';
+import { selectSubmitedList, selectExpense, undoStage } from '../expense/expenseSlice';
 import { ToggleButtonGroup, ToggleButton, Button, InputGroup, FormControl } from 'react-bootstrap'
 import { selectShopsList, addShop } from '../categories/categoriesSlice';
 import { addOperation } from '../history/historySlice';
@@ -42,8 +42,8 @@ export function Shops() {
             submitedList,
             shop: shopValue,
         }
-        dispatch(addOperation(operation))
-        console.log(operation)
+        dispatch(addOperation(operation));
+        dispatch(undoStage(false));
     }
     const summary = submitedList.map((element, index) => {
         let name = element.name.toLowerCase()
@@ -76,6 +76,11 @@ export function Shops() {
                 {shops}
             </ToggleButtonGroup>
 
+            <Button size="lg" className={styles.confirm} variant="outline-light" type="submit" onClick={saveOperationSupporter} >Zapisz operację</Button>
+            <Button size="sm" className={styles.confirm} variant="outline-info" onClick={() => {
+                dispatch(undoStage("one"))
+            }}>Cofnij</Button>
+
             <Button className={styles.addShopBtn} block onClick={() => hideAddShop(!isAddShop)}>Dodaj sklep do listy</Button>
 
             <InputGroup className={isAddShop ? styles.addShop : styles.addShopHide}>
@@ -91,7 +96,6 @@ export function Shops() {
             </InputGroup>
             {warnings ? <p>{warnings}</p> : null}
 
-            <Button className={styles.confirm} variant="outline-light" type="submit" onClick={saveOperationSupporter} >Zapisz operację</Button>
         </div>
     )
 }

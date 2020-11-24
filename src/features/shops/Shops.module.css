@@ -1,6 +1,8 @@
 .shops {
     min-width: 100%;
     min-height: 100vh;
+    color: rgb(150, 150, 150)
+
 
     /* display: flex;
     flex-direction: column;
@@ -21,17 +23,22 @@
 }
 
 .addShopBtn {
-    margin: calc(10px + 2vmin) 0px;
+    margin: calc(10px + 2vmin) 0px 0px;
 }
 
 .addShop {
     transform: translateY(0);
     transition: 0.3s ;
     z-index: 0;
-    margin: calc(10px + 2vmin) 0px;
+    margin: calc(10px + 2vmin) 0px 0px;
 }
 .addShopHide {
     composes: addShop;
     transform: translateY(-100%);
     z-index: -1;
+}
+
+.confirm {
+    margin: 20px auto 10px;
+    display: block;
 }
