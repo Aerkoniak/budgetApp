@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { selectExpense, split, nextStage } from '../expense/expenseSlice';
+import { selectExpense, split, nextStage, undoStage } from '../expense/expenseSlice';
 import { selectCategoriesList, addCategory } from '../categories/categoriesSlice';
 
 import styles from './Categories.module.css'
@@ -99,6 +99,11 @@ function Categories() {
                 {cards}
             </Accordion>
 
+            <Button size="lg" className={styles.confirm} variant="outline-light" type="submit" onClick={() => { submitStage() }} >Dalej</Button>
+            <Button size="sm" className={styles.confirm} variant="outline-info" onClick={() => {
+                dispatch(undoStage(false))
+            }}>Cofnij</Button>
+
             <Button onClick={() => hideAddCat(!isAddCat)} block>Dodaj kategorię wydatków</Button>
 
             <InputGroup className={isAddCat ? styles.addCat : styles.addCatHide}>
@@ -114,7 +119,6 @@ function Categories() {
             </InputGroup>
             {warnings ? <p>{warnings}</p> : null}
 
-            <Button className={styles.confirm} variant="outline-light" type="submit" onClick={() => { submitStage() }} >Zatwierdź</Button>
         </div>
     )
 }

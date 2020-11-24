@@ -11,11 +11,16 @@ export const categoriesSlice = createSlice({
             const list = state.list;
             list.push({ name: `${action.payload}` })
             state.list = list;
+        },
+        addShop: (state, action) => {
+            const shops = state.shops;
+            shops.push({ name: `${action.payload}` })
+            state.shops = shops;
         }
     }
 })
 
-export const { addCategory } = categoriesSlice.actions;
+export const { addCategory, addShop } = categoriesSlice.actions;
 
 export const selectCategoriesList = state => state.categories.list;
 export const selectShopsList = state => state.categories.shops;
