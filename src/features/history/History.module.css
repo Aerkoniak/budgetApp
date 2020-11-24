@@ -1,0 +1,27 @@
+.history {
+     display: block;
+    /* position: absolute; */
+    left: 0;
+    top: 0;
+    /* width: 20vw; */
+    /* min-height: 100vh;  */
+  
+
+    scrollbar-color: #000 #354970;
+}
+.history p{
+ font-size: 18px;
+}
+.history h2 {
+    color: rgb(150, 150, 150)
+}
+
+.dark {
+    background-color: #282c34;
+    color: rgb(150, 150, 150)
+}
+
+.accordionToggle {
+    composes: dark;
+    border: none; 
+}
