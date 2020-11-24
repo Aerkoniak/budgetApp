@@ -17,12 +17,11 @@ export function Expense() {
             <form >
                 <input type="number" className={styles.input} value={todaysExpense} onChange={(e) => setTodayExpense(Number(e.target.value))} />
 
-                <Button className={styles.confirm} variant="outline-light" type="submit" onClick={() => {
+                <Button size="lg" className={styles.confirm} variant="outline-light" type="submit" onClick={() => {
                     dispatch(setExpense(todaysExpense));
                     setTodayExpense(false)
-                }} >Zatwierdź</Button>
+                }} >Dalej</Button>
             </form>
-
         </div>
     )
 }
